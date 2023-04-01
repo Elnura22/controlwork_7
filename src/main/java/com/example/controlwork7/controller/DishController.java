@@ -1,7 +1,6 @@
 package com.example.controlwork7.controller;
 
 import com.example.controlwork7.dto.DishDTO;
-import com.example.controlwork7.dto.RestaurantDTO;
 import com.example.controlwork7.service.DishService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

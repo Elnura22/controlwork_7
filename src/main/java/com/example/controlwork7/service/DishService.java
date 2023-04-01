@@ -3,9 +3,7 @@ package com.example.controlwork7.service;
 import com.example.controlwork7.dao.DishDao;
 import com.example.controlwork7.dao.RestaurantDao;
 import com.example.controlwork7.dto.DishDTO;
-import com.example.controlwork7.dto.RestaurantDTO;
 import com.example.controlwork7.entity.Dish;
-import com.example.controlwork7.entity.Restaurant;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

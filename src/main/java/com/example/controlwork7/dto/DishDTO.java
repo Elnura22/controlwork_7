@@ -1,7 +1,6 @@
 package com.example.controlwork7.dto;
 
 import com.example.controlwork7.entity.Dish;
-import com.example.controlwork7.entity.Restaurant;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 

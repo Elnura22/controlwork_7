@@ -4,10 +4,9 @@ import com.example.controlwork7.dto.RestaurantDTO;
 import com.example.controlwork7.service.RestaurantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +21,9 @@ public class RestaurantController {
     public ResponseEntity<List<RestaurantDTO>> getList(){
         return new ResponseEntity<>(service.getListOfRestaurants(), HttpStatus.OK);
     }
-
-
+    //create new restaurants for checking
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public RestaurantDTO createRestaurant(@RequestBody RestaurantDTO restaurantDTO) {
+        return service.createRestaurant(restaurantDTO);
+    }
 }
