@@ -1,5 +1,6 @@
 package com.example.controlwork7.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Getter
@@ -13,4 +14,6 @@ public class Dish {
     private String name;
     private String type;
     private Long price;
+    @JsonProperty("restaurant_id")
+    private Long restaurantId;
 }
