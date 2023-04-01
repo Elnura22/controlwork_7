@@ -19,7 +19,7 @@ public class ClientDao extends BaseDao {
 
     @Override
     public void createTable() {
-        jdbcTemplate.execute("create table if not exists usr\n" +
+        jdbcTemplate.execute("create table if not exists clients\n" +
                 "(\n" +
                 "    id           bigserial primary key,\n" +
                 "    name         text,\n" +
