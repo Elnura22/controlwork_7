@@ -5,11 +5,9 @@ import com.example.controlwork7.dto.RestaurantDTO;
 import com.example.controlwork7.service.DishService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,8 +17,15 @@ import java.util.List;
 public class DishController {
     private final DishService service;
 
-    @GetMapping("/getListById")
+    //По каждому заведению мы можем просматривать список блюд;
+    @GetMapping("/getListOfDishesByRestaurantId/{id}")
     public ResponseEntity<List<DishDTO>> getList(@PathVariable Long id){
         return new ResponseEntity<>(service.getListOfDishes(id), HttpStatus.OK);
+    }
+
+    //create dishes for checking
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public DishDTO createDishes(@RequestBody DishDTO dishDTO) {
+        return service.createDish(dishDTO);
     }
 }

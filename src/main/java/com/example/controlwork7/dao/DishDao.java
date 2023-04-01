@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,5 +37,19 @@ public class DishDao extends BaseDao {
                 "from dishes " +
                 "where restaurant_id = ?";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Dish.class), id);
+    }
+
+    public void save(Dish dish) {
+
+        String sql = "insert into dishes(name, type, price, restaurant_id) " +
+                "values(?,?,?,?)";
+        jdbcTemplate.update(con -> {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, dish.getName());
+            ps.setString(2, dish.getType());
+            ps.setLong(3, dish.getPrice());
+            ps.setLong(4, dish.getRestaurantId());
+            return ps;
+        });
     }
 }
