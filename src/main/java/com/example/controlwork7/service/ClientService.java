@@ -23,7 +23,7 @@ public class ClientService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<Client> optUser = userDao.findUserByEmail(email);
+        Optional<Client> optUser = userDao.findClientByEmail(email);
         if (optUser.isEmpty()) {
             throw new UsernameNotFoundException("Not found");
         }
@@ -31,7 +31,7 @@ public class ClientService implements UserDetailsService {
     }
 
     public List<ClientDTO> getListOfUsers() {
-        List<Client> userList = userDao.getUsers();
+        List<Client> userList = userDao.getClients();
         return userList.stream().map(ClientDTO::from).collect(Collectors.toList());
     }
 
@@ -45,16 +45,16 @@ public class ClientService implements UserDetailsService {
         return false;
     }
 
-    public ClientDTO registerNewUser(ClientDTO userDTO, String password) {
+    public ClientDTO registerNewClient(ClientDTO clientDTO, String password) {
         password = passwordEncoder.encode(password);
-        Client user = Client.builder()
-                .id(userDTO.getId())
-                .name(userDTO.getName())
-                .email(userDTO.getEmail())
+        Client client = Client.builder()
+                .id(clientDTO.getId())
+                .name(clientDTO.getName())
+                .email(clientDTO.getEmail())
                 .password(password)
-                .enabled(userDTO.isEnabled())
+                .enabled(clientDTO.isEnabled())
                 .build();
-        userDao.save(user);
-        return ClientDTO.from(user);
+        userDao.save(client);
+        return ClientDTO.from(client);
     }
 }

@@ -30,27 +30,27 @@ public class ClientDao extends BaseDao {
     }
 
 
-    public void save(Client user) {
-        String sql = "insert into usr(name, email, password, enabled) " +
+    public void save(Client client) {
+        String sql = "insert into clients(name, email, password, enabled) " +
                 "values(?,?,?,?)";
         jdbcTemplate.update(con -> {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, user.getName());
-            ps.setString(2, user.getEmail());
-            ps.setString(3, user.getPassword());
-            ps.setBoolean(4, user.isEnabled());
+            ps.setString(1, client.getName());
+            ps.setString(2, client.getEmail());
+            ps.setString(3, client.getPassword());
+            ps.setBoolean(4, client.isEnabled());
             return ps;
         });
     }
 
-    public List<Client> getUsers() {
-        String sql = "select * from usr";
+    public List<Client> getClients() {
+        String sql = "select * from clients";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Client.class));
     }
 
-    public Optional<Client> findUserByEmail(String email) {
+    public Optional<Client> findClientByEmail(String email) {
         String sql = "select * " +
-                "from usr " +
+                "from clients " +
                 "where email = ?";
         return Optional.ofNullable(DataAccessUtils.singleResult(
                 jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Client.class), email)

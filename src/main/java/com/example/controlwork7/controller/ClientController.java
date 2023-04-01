@@ -19,6 +19,6 @@ public class ClientController {
         if (service.userExists(userDTO.getName())) {
             return ResponseEntity.ok(HttpStatus.BAD_REQUEST);
         }
-        return ResponseEntity.ok(service.registerNewUser(userDTO, password));
+        return ResponseEntity.ok(service.registerNewClient(userDTO, password));
     }
 }
