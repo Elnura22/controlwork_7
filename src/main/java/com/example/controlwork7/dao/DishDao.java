@@ -31,8 +31,6 @@ public class DishDao extends BaseDao {
                 ");");
     }
 
-
-
     public List<Dish> getListById(Long id) {
         String sql = "select * " +
                 "from dishes " +
