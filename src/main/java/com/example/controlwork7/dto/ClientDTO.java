@@ -8,12 +8,12 @@ import lombok.*;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 public class ClientDTO {
-    public static ClientDTO from(Client user) {
+    public static ClientDTO from(Client client) {
         return builder()
-                .id(user.getId())
-                .name(user.getName())
-                .email(user.getEmail())
-                .enabled(user.isEnabled())
+                .id(client.getId())
+                .name(client.getName())
+                .email(client.getEmail())
+                .enabled(client.isEnabled())
                 .build();
     }
     private Long id;
