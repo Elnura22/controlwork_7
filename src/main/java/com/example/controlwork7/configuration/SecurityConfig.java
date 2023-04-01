@@ -23,6 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        http.authorizeRequests().antMatchers(HttpMethod.PUT, "/tasks").fullyAuthenticated();
 //        http.authorizeRequests().antMatchers(HttpMethod.GET, "/tasks/**").fullyAuthenticated();
 //        http.authorizeRequests().antMatchers(HttpMethod.GET, "/tasks").fullyAuthenticated();
+
+
         http.authorizeRequests()
                 .anyRequest()
                 .permitAll();

@@ -14,9 +14,12 @@ public class InitDatabase {
     CommandLineRunner init(ClientDao clientDao, DishDao dishDao, OrderDao orderDao, RestaurantDao restaurantDao) {
         return (args) -> {
             clientDao.createTable();
-            dishDao.createTable();
-            orderDao.createTable();
+
             restaurantDao.createTable();
+
+            dishDao.createTable();
+
+            orderDao.createTable();
 
         };
     }
